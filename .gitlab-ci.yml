@@ -37,7 +37,7 @@ deploy_app:
    - docker push bigr.bios.cf.ac.uk:4567/$CI_PROJECT_PATH
    - git clone git@bigr.bios.cf.ac.uk:comics/$PROJECT_NAME && 
      cd $PROJECT_NAME && 
-     git remote rm origin
+     git remote rm origin &&
      git remote add origin git@github.com:c-omics/$PROJECT_NAME && 
      git push -u origin master && 
      cd .. && 
