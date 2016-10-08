@@ -1,4 +1,4 @@
-FROM sglim2/centos7
+FROM comics/centos
 MAINTAINER Ian Merrick <MerrickI@Cardiff.ac.uk>
 
 ##############################################################
