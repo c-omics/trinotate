@@ -13,7 +13,9 @@ before_script:
   # log into the docker registry
   -  docker login -e unknown -u gitlab-ci-token -p $CI_BUILD_TOKEN bigr.bios.cf.ac.uk:4567
   
-
+variables:
+  PROJECT_NAME: "{{ CI_PROJECT_NAME }}"
+  
 types:
   - build
   - deploy
@@ -33,5 +35,12 @@ deploy_app:
   type: deploy
   script:
    - docker push bigr.bios.cf.ac.uk:4567/comics/trinotate
-#   - git clone git@bigr:comics/trinotate && cd trinotate && git push -f git@github.com:sglim2/docker-trinotate master && cd .. && rm -rf trinotate
+   - git clone git@bigr.bios.cf.ac.uk:comics/{{ PROJECT_NAME }} && 
+     cd {{ PROJECT_NAME }} && 
+     git remote rm origin
+     git remote add origin git@github.com:c-omics/{{ PROJECT_NAME }} && 
+     git push -u  origin master && 
+     cd .. && 
+     rm -rf {{ PROJECT_NAME }}
+#   - git clone git@bigr:comics/trinotate && cd trinotate && git push -f git@github.com:c-omics/trinotate master && cd .. && rm -rf trinotate
 
