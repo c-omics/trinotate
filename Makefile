@@ -3,6 +3,8 @@
 subdirs = 3.0.0 \
           3.0.1
 
+LATEST=3.0.1
+
 .PHONY: $(subdirs)
 
 all: $(subdirs)
@@ -11,6 +13,6 @@ test: $(subdirs)
 clean: $(subdirs)
 
 $(subdirs):
-	$(MAKE) -C $@  $(MAKECMDGOALS) LATEST=3.0.1
+	$(MAKE) -C $@  $(MAKECMDGOALS) LATEST=$(LATEST)
 	
 
