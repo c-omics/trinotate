@@ -23,9 +23,11 @@ RUN yum install -y  \
            perl-HTML-Template \
            perl-URI \
            ; \
+    yum clean all ; \
     git clone $GIT ; \
     cd $APP_NAME ; \
     git checkout tags/$VERSION ; \
+    rm -rf .git ; \
     mkdir -p /usr/share/licenses/$APP_NAME-$VERSION ; \
     cp LICENSE.txt /usr/share/licenses/$APP_NAME-$VERSION/ ; \
     cd ../         ; \
